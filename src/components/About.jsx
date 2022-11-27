@@ -12,7 +12,7 @@ export default function About() {
         <h1 className='text-3xl font-bold text-cyan-700 text-center'>About Me</h1>
         <div className="my-5 justify-center contents gap-x-10 lg:flex">
             <div className='bg-gradient-to-tr lg:mx-1 from-slate-500 to-transparent rounded-xl w-64 h-64 mx-auto my-6'>
-                <img src={childPic} className="h-64 w-64 rotate-12 rounded-xl hover:rotate-0 ease-in duration-300"/>
+                <img src={childPic} alt="about" className="h-64 w-64 rotate-12 rounded-xl hover:rotate-0 ease-in duration-300"/>
             </div>
             <div className="container mx-auto max-w-[285px] md:max-w-[413px] lg:mx-0">
                 <div className="grid grid-cols-2 md:grid-cols-3 text-center content-between">
