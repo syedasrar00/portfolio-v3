@@ -1,8 +1,28 @@
-import React from 'react'
 import {FiMail} from 'react-icons/fi'
 import { variable } from './variable'
+import React, { useRef, useState } from 'react';
+import emailjs from 'emailjs-com';
 
+
+  
 export default function Contact() {
+  const form = useRef();
+  const [sent , setSent] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_olsqdok', 'template_c5o9xdq', form.current, 'FWR-5_56-8zhBV1Qs')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      setSent(true);
+      setTimeout(() => {
+        setSent(false)
+      }, 2000);
+  };
   return (
     <div className='mt-32 mx-auto max-w-[800px] py-10 pb-24' id='contact'>
         <p className='text-gray-800 font-sans text-center text-xs font-bold'>Get In Touch</p>
@@ -29,11 +49,13 @@ export default function Contact() {
             </article>
           </div>
         
-        <form action='' className='mt-1 mx-auto'>
-          <input className='rounded-lg mx-2 my-4 py-2 px-2 w-72 lg:w-96' type="text" name='name' placeholder='your name' required></input><br />
-          <input className='rounded-lg mx-2 my-4 py-2 px-2 w-72 lg:w-96' type="email" name='email' placeholder='your email' required></input><br />
+        <form ref={form} onSubmit={sendEmail} className='mt-1 mx-auto'>
+          <input className='rounded-lg mx-2 my-4 py-2 px-2 w-72 lg:w-96' type="text" name='user_name' placeholder='your name' required></input><br />
+          <input className='rounded-lg mx-2 my-4 py-2 px-2 w-72 lg:w-96' type="email" name='user_email' placeholder='your email' required></input><br />
           <textarea className='rounded-lg mx-2 my-4 py-2 px-2 w-72 lg:w-96' name='message' rows='7' placeholder='Enter your message here!' /><br />
-          <button className='rounded-lg mx-2 my-2 py-3 px-6 bg-slate-800 text-cyan-600 hover:bg-slate-400 hover:text-cyan-900' type='submit'>Send Message</button>
+          <section className='flex'><input type='submit' className='rounded-lg mx-2 my-2 py-3 px-6 bg-slate-800 text-cyan-600 hover:bg-slate-400 hover:text-cyan-900' value='Send Message'/>
+          <p className={`text-lg text-white mx-8 rounded-lg px-5 py-4 text-center ${!sent?'hidden':'bg-cyan-500'}`}>Message Sent!</p>
+          </section>
         </form>
         </div>
     </div>
