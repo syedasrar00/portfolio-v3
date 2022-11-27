@@ -3,7 +3,7 @@ import { variable } from './variable'
 
 export default function Portfolio() {
   return (
-    <div className='my-12 ' id='portfolio'>
+    <div className='py-20' id='portfolio'>
         <p className='text-gray-800 font-sans text-center text-xs font-bold'>My Recent Work</p>
         <h1 className='text-3xl font-bold text-cyan-700 text-center pb-8'>Portfolio</h1>
         <div className="grid grid-cols-1 mx-auto max-w-[1800px] xl:grid-cols-3 md:grid-cols-2 gap-10 justify-center">
